@@ -1,0 +1,7 @@
+CHECK CPU CONSUMERS : 
+
+ ps -eo pid,ppid,cmd,%cpu --sort=-%cpu | head
+ 
+ Check memory and CPU and sort by memory : 
+ 
+ ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%mem | head
