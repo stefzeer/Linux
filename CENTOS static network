@@ -1,0 +1,11 @@
+1. run "ip a" to find the name of your network interface.
+ 2. Within the directory /etc/sysconfig/network-scripts/ you should find the file ifcfg-INTERFACENAME (Where INTERFACENAME is the name of your interface).
+ 3.Open the correct file for editing with the command sudo vi /etc/sysconfig/network-scripts/ifcfg-enp0s3. and edit he following lines to look exactly like shown below. : BOOTPROTO=static
+IPADDR=1.1.1.1
+NETMASK=255.255.255.0
+GATEWAY=1.1.1.1
+DNS1=1.1.1.1
+DNS2=1.1.1.1
+
+4.Save and close that file. In order to make the changes take effect, issue the command sudo systemctl restart network. Once the networking system has restarted, issue the command ip a to see that your IP address has changed to reflect your configuration.
+
