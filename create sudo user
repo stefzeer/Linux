@@ -1,0 +1,5 @@
+adduser username
+
+passwd username
+
+usermod -aG wheel username
