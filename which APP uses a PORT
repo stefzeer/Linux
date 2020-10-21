@@ -1,0 +1,5 @@
+lsof -i :portnumber 
+
+example : 
+
+lsof -i :389
