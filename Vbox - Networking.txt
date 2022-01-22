@@ -1,0 +1,32 @@
+Configure networks in virtualbox. 
+
+1. HOST-ONLY network global setting. 
+Go to File>Host network manager> select host only network > properties
+On DHCP tab enter the address ranges and the IP that the DHCP server will have. 
+Click Apply. 
+
+2. Go to the VMs properties > Network > choose Host only.
+start the VMs 
+run:
+dhclient 
+
+3.Adding a second NAT adapter to have access to the internet.
+Go to the VMs properties > Network > second adapter tab > Choose NAT.
+boot the OS and list the available adapters with 
+
+ifconfig -a 
+
+The first host-only adapter will already have an ipv4 IP address assigned. 
+The one that doesn't have it is the NAT adapter which has to be configured : 
+
+cd /etc/sysconfig/network-scripts/
+copy the file of the configured adapter while renaming it with the second adapter as shown by ifconfig.
+edit the newly created file as follows : 
+
+Update the DEVICE and NAME field with the name of the adapter.
+Update (or remove) the HWADDR entry
+Remove the UUID entry (if it is there)
+Make any other changes you need.
+
+Run systemctl restart NetworkManager
+check with ifconfig the newly created device and the assigned IP address. 
